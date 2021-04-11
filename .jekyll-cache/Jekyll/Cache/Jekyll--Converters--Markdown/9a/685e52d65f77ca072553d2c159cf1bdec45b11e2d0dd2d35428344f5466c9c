@@ -1,0 +1,43 @@
+I"]<h3 id="兴趣爱好">兴趣爱好</h3>
+<ul>
+  <li>最大的爱好是吃喝玩乐，之余会看点书和一些严肃的电影；</li>
+  <li>喜欢数学、物理、历史、计算机等学科；</li>
+  <li>放松的运动是游泳和跑步，目前半马的最好成绩为2小时10分钟。</li>
+</ul>
+
+<h3 id="个人规划">个人规划</h3>
+<p>做过Python web的开发和爬虫，之后转向<strong>数据挖掘</strong>和<strong>机器学习</strong>方向。目前专注文本数据挖掘和知识库方向。</p>
+
+<h3 id="联系方式">联系方式</h3>
+
+<ul>
+  <li>微信号：JChen2110</li>
+  <li>邮箱：vinctchanx@163.com</li>
+</ul>
+
+<section class="post-comments">
+
+  
+    <div id="disqus_thread"></div>
+    <script>
+    
+    var disqus_config = function () {
+        this.page.url = "https://blackedu.vip/about/";
+        this.page.identifier = "/about/";
+    };
+    var disqus_shortname = 'blackedu-vip';
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>要查看<a href="http://disqus.com/?ref_noscript"> Disqus </a>评论，请启用 JavaScript</noscript>
+    
+  
+
+</section>
+
+:ET
