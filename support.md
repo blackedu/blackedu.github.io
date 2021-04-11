@@ -47,10 +47,8 @@ title: 技术支持
 <h3> 如何联系到我 </h3>
 
 <p> 
-email：leoparpan@icloud.com       
-<p> 
-qq: 1499065178     
-<p> 
+email：vinctchanx@gmail.com       
+
 
 {% include comments.html %}
 
