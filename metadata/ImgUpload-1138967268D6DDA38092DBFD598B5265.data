@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>51FFD9729C0CBCB276450B4F1A139AE1</key>
+	<array>
+		<dict>
+			<key>localURL</key>
+			<string>media/15918418682853/zhengpapar.png</string>
+			<key>remoteURL</key>
+			<string>http://tools.blackedu.vip:8987/images/2020/11/25/zhengpapar.png</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/16062868437327/16062884099238.jpg</string>
+			<key>remoteURL</key>
+			<string>http://tools.blackedu.vip:8987/images/2020/11/25/16062884099238.jpg</string>
+		</dict>
+		<dict>
+			<key>localURL</key>
+			<string>media/16062868437327/16062889242203.jpg</string>
+			<key>remoteURL</key>
+			<string>http://tools.blackedu.vip:8987/images/2020/11/25/16062889242203.jpg</string>
+		</dict>
+	</array>
+	<key>selectedItem</key>
+	<string>51FFD9729C0CBCB276450B4F1A139AE1</string>
+</dict>
+</plist>
