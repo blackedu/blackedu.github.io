@@ -1,0 +1,55 @@
+I"�<h2 id="关系抽取介绍">关系抽取介绍</h2>
+
+<p>关系抽取是实体识别的下游任务，通常是先做完实体识别，然后在判断两个实体的关系，这种做法被称作<strong>流水线方法</strong>（pipline）。之后兴起了joint model的思路，<strong>联合抽取</strong>的方案，一个模型完成实体识别和关系抽取，并且很多论文都有验证这类方法的有效性。本文作为关系抽取的初步模型，仍然采用pipeline思路，尝试了一种基于Bert的关系分类模型。</p>
+
+<h2 id="分类模型">分类模型</h2>
+
+<p>实体识别之后，得到了预先定义的<strong>实体关键词</strong>，通常会有人物、地点、机构、作品、图书等实体名词。然后找到两两实体的关系，关系的类别也是事先定义好的。比如</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"《独孤后宫之第一岳父》，作者絮千回，17k小说网连载历史穿越小说"
+</code></pre></div></div>
+
+<p>人物实体是“絮千回”，作品实体是“独孤后宫之第一岳父”，这两个实体的关系是“作者”关系。那么在这个例子中，我们输入的是<strong>“原始文本”+“絮千回”+“独孤后宫之第一岳父”</strong>，除了关键词以外，隐含的标签特征也可以考虑进去，如“絮千回”的标签是“PER”，“独孤后宫之第一岳父”的标签是“WORK”，输出的结果是关系分类“作者”。于是可以这样设计标签：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{"object_type": {"@value": "人物"}, "predicate": "作者", "subject_type": "图书作品"}
+</code></pre></div></div>
+
+<p>这里的标签设计参考<a href="https://aistudio.baidu.com/aistudio/competition/detail/46">百度千言的信息抽取比赛</a>，简单O和复杂O的设计可以参考原文[<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>]。</p>
+
+<p>只考虑实体名称，不考虑实体的其余特征情况下，建立的语言模型如下：</p>
+
+\[p(y=C_i|X, E_1, E_2)\]
+
+<table>
+  <tbody>
+    <tr>
+      <td>如果把实体名称直接放在输入的 \(X\) 中，直接就是建模 $$p(y=C_i</td>
+      <td>X)$$ ，就是文本分类问题了。这样操作把实体直接放在文本，中，期待模型学到这几个字（实体放在文本中）的关系有点强模型所难。改进的做法很多，比如设计实体词向量与原来的内容做拼接，并且这个向量是可训练的。更简单的做法，就是附加实体的相对位置特征。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>不过呢，本文既然采用Bert模型，直接通过<code class="language-plaintext highlighter-rouge">segment id</code>来去区分文本和输入的实体。拼接的方式可以这样：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[CLS]text[SEP]E1[SEP][E2][SEP]
+  0   0    0   1   1   1   1
+</code></pre></div></div>
+
+<p>即便是输入实体的顺序反了，模型仍然可以准确的判断分类。</p>
+
+<h2 id="实验结果">实验结果</h2>
+
+<p>实验数据采用百度公开的比赛数据，一共49个分类，采用Google的base版Bert，大约7个epoch就能得到超过90%以上的分类准确率。截止发文时候源代码还没有提交，可以关注这个<a href="https://github.com/JayChen123/ML-tutorials">github</a>。</p>
+
+<p>百度的信息抽取比赛最近才开始做，有新的进展会逐步整理出来。写本文的目的是帮助我整理每天的工作和想法，</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>https://aistudio.baidu.com/aistudio/competition/detail/46 “百度千言的信息抽取比赛” <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+:ET
